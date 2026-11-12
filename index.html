@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>News Website</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background-color: lightblue;
+            margin: 0;
+            text-align: center;
+        }
+
+        header {
+            background-color: navy;
+            color: white;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: white;
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            background-color: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .news {
+            background-color: #eeeeee;
+            padding: 15px;
+            margin: 15px;
+            border-radius: 8px;
+            text-align: left;
+        }
+
+        h2 {
+            color: navy;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Daily News</h1>
+        <p>Your Daily News Updates</p>
+    </header>
+
+    <div class="container">
+
+        <h2>Latest News</h2>
+
+        <button onclick="showNews('all')">All</button>
+        <button onclick="showNews('sports')">Sports</button>
+        <button onclick="showNews('technology')">Technology</button>
+        <button onclick="showNews('education')">Education</button>
+
+        <div id="newsList"></div>
+
+    </div>
+
+    <script>
+
+        var news = [
+            {
+                title: "India Wins Cricket Match",
+                category: "sports",
+                detail: "India wins an exciting cricket match."
+            },
+            {
+                title: "New Technology Trends",
+                category: "technology",
+                detail: "New technologies are changing the world."
+            },
+            {
+                title: "Education System Updates",
+                category: "education",
+                detail: "New learning methods are introduced."
+            },
+            {
+                title: "Football Championship",
+                category: "sports",
+                detail: "Teams prepare for the upcoming championship."
+            },
+            {
+                title: "Artificial Intelligence",
+                category: "technology",
+                detail: "AI is becoming popular in different fields."
+            }
+        ];
+
+        function showNews(category) {
+
+            var output = "";
+
+            for (var i = 0; i < news.length; i++) {
+
+                if (category == "all" ||
+                    news[i].category == category) {
+
+                    output +=
+                    '<div class="news">' +
+                    '<h3>' + news[i].title + '</h3>' +
+                    '<p>' + news[i].detail + '</p>' +
+                    '<small>Category: ' +
+                    news[i].category + '</small>' +
+                    '</div>';
+                }
+            }
+
+            document.getElementById("newsList").innerHTML = output;
+        }
+
+        showNews("all");
+
+    </script>
+
+</body>
+</html>
